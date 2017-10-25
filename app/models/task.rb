@@ -1,0 +1,46 @@
+class Task < ApplicationRecord
+  belongs_to :list
+  def toggle_complete!
+    update(complete: !complete)
+  end
+
+  def toggle_favorite!
+    update(favorite: !favorite)
+  end
+
+  def overdue?
+    return Time.now > deadline
+  end
+
+  def increment_priority!
+    if priority < 10
+      update(priority: priority + 1)
+    end
+  end
+
+  def decrement_priority!
+    if priority > 1 
+      update(priority: priority - 1)
+    end
+  end
+
+  def snooze_hour!
+    update(deadline: deadline + 1.hour)
+  end
+end
+
+
+# Add Comment Collapse
+
+
+
+# 1 new message since 7:26 PM
+# Mark as read (esc)
+
+# Message #class
+
+# *bold* _italics_ ~strike~ `code` ```preformatted``` >quote
+# Files
+
+
+# end
